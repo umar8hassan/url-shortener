@@ -1,0 +1,188 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "URL Shortener",
+    "contact": {},
+    "description": "URL Shortener API",
+    "version": "0.1.0"
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/url/add":{
+      "post": {
+        "tags": [
+          "URL"
+        ],
+        "description": "Submit URL",
+        "operationId": "submitURL",
+        "parameters": [],
+        "requestBody": {
+          "description": "Submit URL to shorten.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/URL"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/URL"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/401Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/404NotFound"
+          }
+        }
+      }
+    },
+    "/user/add":{
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Add User",
+        "operationId": "addUser",
+        "parameters": [],
+        "requestBody": {
+          "description": "Submit User to Add.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/USER"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/USER"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/401Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/404NotFound"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "URL": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "url": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "clicked": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "date-time"
+          }
+        }
+      },
+      "USER": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "integer",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "responses": {
+      "404NotFound": {
+        "description": "Entity not found"
+      },
+      "401Unauthorized": {
+        "description": "Unauthorized"
+      },
+      "400BadRequest": {
+        "description": "Bad request"
+      },
+      "403Forbidden": {
+        "description": "Forbidden"
+      }
+    },
+    "securitySchemes": {
+    }
+  },
+  "security": [
+    {
+      "ApiKey": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "short"
+    }
+  ]
+}
