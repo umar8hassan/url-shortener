@@ -117,6 +117,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "owner_id": {
+            "type": "integer",
+            "format": "int32"
+          },
           "clicked": {
             "type": "integer",
             "format": "int32"

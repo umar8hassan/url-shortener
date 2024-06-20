@@ -38,6 +38,6 @@ def redirect_url(code):
             url.clicks += 1
             uow.commit()
         else:
-            return "URL not registered with US.", 404
+            return "URL not registered with us.", 404
 
         return redirect(url.url)
